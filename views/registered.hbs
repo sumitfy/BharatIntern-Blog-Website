@@ -1,0 +1,104 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registered</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+<header class="text-gray-400 bg-gray-900 body-font">
+  <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+    <a class="flex title-font font-medium items-center text-white mb-4 md:mb-0">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full" viewBox="0 0 24 24">
+        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+      </svg>
+      <span class="ml-3 text-xl">Blog Website</span>
+    </a>
+    <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
+      <a class="mr-5 hover:text-white"></a>
+      <a class="mr-5 hover:text-white"></a>
+      <a href="create_blog" class="mr-5 hover:text-white">Create</a>
+      <a class="mr-5 hover:text-white"></a>
+    </nav>
+    <a href="/logout" class="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0">Logout
+      <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+        <path d="M5 12h14M12 5l7 7-7 7"></path>
+      </svg>
+    </a>
+  </div>
+</header>
+    <div style="bg-white">
+      {{!-- <div class="p-2 w-full">
+        <a
+          href="/logout"
+          class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg"
+        >Logout</a>
+      </div> --}}
+
+      <div class="relative isolate px-6 pt-14 lg:px-8">
+        <div class="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
+          <div class="text-center">
+            <h1
+              class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl"
+            >All your blogs are here</h1>
+            <p class="mt-6 text-lg leading-8 text-gray-600">Share your thoughts
+              with others by creating your blog.</p>
+            <div class="mt-10 flex items-center justify-center gap-x-6">
+              <a
+                href="create_blog"
+                class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              >Create Blog</a>
+            </div>
+          </div>
+        </div>
+        <div
+          class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
+          aria-hidden="true"
+        >
+          <div
+            class="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]"
+            style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"
+          ></div>
+        </div>
+      </div>
+    </div>
+    <section class="text-gray-600 body-font">
+  <div class="container px-5 py-24 mx-auto" >
+    <div class="flex flex-wrap -m-4 ">
+     {{#each blogdatabse}}
+        <div class="xl:w-1/3 md:w-1/2 p-4 transition-transform transform hover:scale-105">
+        <div class="border border-gray-200 p-6 rounded-lg">
+           <div class="w-10 h-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4">
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-6 h-6" viewBox="0 0 24 24">
+              <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+          </div>
+         {{!-- <span style= "justify-content: right , margin-bottom: 10px"; class="inline-block py-1 px-2 rounded bg-indigo-50 text-indigo-500 text-xs font-medium tracking-widest">CATEGORY</span> --}}
+          <h1 class="text-xl text-gray-900 font-medium title-font mb-2">{{this.heading}}</h1>
+          <p class="leading-relaxed text-base">Posted By - {{this.name}}</p>
+          <a href="/name/{{this._id}}" class="flex mx-auto mt-16 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Read Blog</a>
+        </div>
+      </div>
+     {{/each}}
+    </div>
+  </div>
+</section>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
